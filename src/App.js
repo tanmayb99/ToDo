@@ -13,8 +13,11 @@ export default function App() {
     setTodos(todos.filter(event => todos.indexOf(event) !== index));
   }
 
-  function editHandler(index) {
-    setTodos((todos[index].text = "hello"));
+  function editHandler(myString, index) {
+    //let myString =
+    const element = document.getElementById(todos[index].text);
+    element.firstElementChild.innerHTML = "Be ready for class at 10";
+    console.log(element);
   }
 
   function doneHandler(event, index) {
@@ -26,9 +29,11 @@ export default function App() {
     return (
       <Item
         key={index}
+        number={index + 1}
         item={element.text}
         remove={() => deleteHandler(index)}
         done={event => doneHandler(event, index)}
+        edit={event => editHandler(event, index)}
       />
     );
   });
